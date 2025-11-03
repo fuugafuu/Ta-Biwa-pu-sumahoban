@@ -1,0 +1,46 @@
+/* mobile-first, finger-friendly */
+:root{
+  --bg:#0b0f1a; --fg:#e8ecf1; --muted:#9aa3b2; --acc:#4cc9f0; --btn:#1a2234;
+  --radius:14px;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans JP", sans-serif;
+  background: var(--bg); color: var(--fg);
+}
+.safe-area{padding: max(12px, env(safe-area-inset-top)) max(12px, env(safe-area-inset-right)) max(12px, env(safe-area-inset-bottom)) max(12px, env(safe-area-inset-left));}
+.app-bar{
+  position:sticky; top:0; z-index:10; display:flex; align-items:center; gap:10px;
+  padding: env(safe-area-inset-top) 12px 12px; background: linear-gradient(180deg, #0b0f1a, #0b0f1aee);
+  backdrop-filter: saturate(1.5) blur(6px);
+  border-bottom:1px solid #1e2a44;
+}
+.title{font-weight:700; letter-spacing:.2px}
+.actions{margin-left:auto; display:flex; gap:8px}
+.btn{
+  background: var(--btn); color: var(--fg); border:1px solid #27304a; border-radius: var(--radius); padding:14px 16px;
+  font-size:16px; line-height:1; min-width: 44px; min-height: 44px; touch-action: manipulation;
+}
+.btn.small{padding:10px 12px; font-size:14px; min-height: 36px}
+.btn.file{display:inline-flex; align-items:center; justify-content:center; cursor:pointer}
+.btn:active{transform: translateY(1px)}
+.controls{display:grid; gap:12px; margin:12px 0 16px}
+.field{display:grid; gap:6px}
+.field input{width:100%; padding:14px 16px; border-radius: var(--radius); border:1px solid #27304a; background:#0f1524; color:var(--fg);}
+.row{display:flex; gap:8px}
+.advanced{border:1px solid #27304a; border-radius:var(--radius); padding:10px 12px; background:#0f1422}
+.advanced .grid{display:grid; grid-template-columns: repeat(2, minmax(0,1fr)); gap:10px; margin-top:10px}
+.player-wrap{position:relative; width:100%; border-radius:var(--radius); overflow:hidden; background:#0f1422; border:1px solid #1e2a44}
+/* 16:9 fluid box; iOS URL bar safe sizing */
+.player-wrap::before{content:""; display:block; padding-top:56.25%}
+.player-wrap > iframe{
+  position:absolute; inset:0; width:100%; height:100%; border:0; background:#000;
+}
+.tips{opacity:.9}
+.app-footer{padding:20px; text-align:center; color:var(--muted); border-top:1px solid #1e2a44}
+
+/* Larger screens */
+@media (min-width:920px){
+  main{max-width:900px; margin:0 auto}
+}
